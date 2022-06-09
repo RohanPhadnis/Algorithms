@@ -22,7 +22,7 @@ def recursive_bubble_sort(array, x=0, y=0):
             return recursive_bubble_sort(array, x=x, y=y+1)
 
 
-def selection_sort(array):
+def insertion_sort(array):
     for x in range(1, len(array)):
         for y in range(0, x):
             if array[x] < array[y]:
@@ -31,20 +31,20 @@ def selection_sort(array):
     return array
 
 
-def recursive_selection_sort(array, x=1, y=0):
+def recursive_insertion_sort(array, x=1, y=0):
     if x == len(array):
         return array
     elif y >= x:
-        return recursive_selection_sort(array, x=x+1, y=0)
+        return recursive_insertion_sort(array, x=x+1, y=0)
     elif array[x] < array[y]:
         array.insert(y, array[x])
         array.pop(x+1)
-        return recursive_selection_sort(array, x=x+1, y=0)
+        return recursive_insertion_sort(array, x=x+1, y=0)
     else:
-        return recursive_selection_sort(array, x=x, y=y+1)
+        return recursive_insertion_sort(array, x=x, y=y+1)
 
 
-def insertion_sort(array):
+def selection_sort(array):
     index = 0
     while index < len(array) - 1:
         val = min(array[index:])
@@ -54,14 +54,14 @@ def insertion_sort(array):
     return array
 
 
-def recursive_insertion_sort(array, new=None):
+def recursive_selection_sort(array, new=None):
     if len(array) == 0:
         return new
     if new is None:
         new = []
     new.append(min(array))
     array.remove(min(array))
-    return recursive_insertion_sort(array, new=new)
+    return recursive_selection_sort(array, new=new)
 
 
 def splitter(array):

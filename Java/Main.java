@@ -37,22 +37,22 @@ public class Main {
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
-        System.out.println("Selection Sort: an algorithm that sorts a list by comparing a selected element to other elements.");
-        array = generateRandArray(LENGTH);
-        printArray(array);
-        time = System.currentTimeMillis();
-        System.out.print("output: ");
-        Sort.selectionSort(array);
-        printArray(array);
-        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
-        System.out.println();
-
-        System.out.println("Insertion Sort: an algorithm that sorts a list by dividing it into sorted and unsorted sections.");
+        System.out.println("Insertion Sort: an algorithm that sorts a list by comparing a selected element to other elements.");
         array = generateRandArray(LENGTH);
         printArray(array);
         time = System.currentTimeMillis();
         System.out.print("output: ");
         Sort.insertionSort(array);
+        printArray(array);
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
+        System.out.println();
+
+        System.out.println("Selection Sort: an algorithm that sorts a list by dividing it into sorted and unsorted sections.");
+        array = generateRandArray(LENGTH);
+        printArray(array);
+        time = System.currentTimeMillis();
+        System.out.print("output: ");
+        Sort.selectionSort(array);
         printArray(array);
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();

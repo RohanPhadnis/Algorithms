@@ -29,7 +29,7 @@ public class Sort {
         }
     }
 
-    public static void selectionSort(int[] array) {
+    public static void insertionSort(int[] array) {
         int val;
         boolean inserted;
         for (int x = 1; x < array.length; x++) {
@@ -51,7 +51,7 @@ public class Sort {
         }
     }
 
-    public static void insertionSort(int[] array) {
+    public static void selectionSort(int[] array) {
         int val;
         int minIndex;
         for (int i = 0; i < array.length; i++) {
