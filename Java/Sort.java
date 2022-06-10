@@ -29,6 +29,25 @@ public class Sort {
         }
     }
 
+    public static void recursiveBubbleSort(int[] array) {
+        recursiveBubbleSort(array, 0, true);
+    }
+
+    public static void recursiveBubbleSort(int[] array, int x, boolean sorted) {
+        int temp;
+        int index = x % array.length;
+        boolean s = sorted;
+        if (index + 1 < array.length && array[index] > array[index + 1]) {
+            temp = array[index];
+            array[index] = array[index + 1];
+            array[index + 1] = temp;
+            s = false;
+        }
+        if (x < Math.pow(array.length, 2) && !(x > 0 && x % array.length == 0 && s)) {
+            recursiveBubbleSort(array, x+1, s);
+        }
+    }
+
     public static void insertionSort(int[] array) {
         int val;
         boolean inserted;
@@ -51,6 +70,24 @@ public class Sort {
         }
     }
 
+    public static void recursiveInsertionSort(int[] array) {
+        recursiveInsertionSort(array, 1);
+    }
+
+    public static void recursiveInsertionSort(int[] array, int index) {
+        int count = 0;
+        int temp;
+        if (index < array.length) {
+            while (array[count] <= array[index] && count < index) {
+                count += 1;
+            }
+            temp = array[index];
+            moveUp(array, count, index);
+            array[count] = temp;
+            recursiveInsertionSort(array, index + 1);
+        }
+    }
+
     public static void selectionSort(int[] array) {
         int val;
         int minIndex;
@@ -59,6 +96,20 @@ public class Sort {
             val = array[i];
             array[i] = array[minIndex];
             array[minIndex] = val;
+        }
+    }
+
+    public static void recursiveSelectionSort(int[] array) {
+        recursiveSelectionSort(array, 0);
+    }
+
+    public static void recursiveSelectionSort(int[] array, int index) {
+        if (index < array.length) {
+            int minIndex = getMinIndex(array, index);
+            int temp = array[index];
+            array[index] = array[minIndex];
+            array[minIndex] = temp;
+            recursiveSelectionSort(array, index + 1);
         }
     }
 }

@@ -5,7 +5,8 @@ public class Main {
         double time;
         int[] array;
         int target;
-        int LENGTH = 400;
+        final int LENGTH = 400;
+        final int RLENGTH = 80;
 
         System.out.println("Linear Search: an algorithm that finds an element in a list by iterating sequentially.");
         array = generateRandArray(LENGTH);
@@ -14,6 +15,10 @@ public class Main {
         System.out.println("target " + target);
         time = System.currentTimeMillis();
         System.out.println("output: " + Search.linearSearch(array, target));
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
+        System.out.println("Recursive Linear Search");
+        time = System.currentTimeMillis();
+        System.out.println("output: " + Search.recursiveLinearSearch(array, target));
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
@@ -25,6 +30,10 @@ public class Main {
         time = System.currentTimeMillis();
         System.out.println("output: " + Search.binarySearch(array, target));
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
+        System.out.println("Recursive Binary Search");
+        time = System.currentTimeMillis();
+        System.out.println("output: " + Search.recursiveBinarySearch(array, target));
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
         System.out.println("Bubble Sort: an algorithm that sorts a list by comparing adjacent elements to each other.");
@@ -33,6 +42,14 @@ public class Main {
         time = System.currentTimeMillis();
         System.out.print("output: ");
         Sort.bubbleSort(array);
+        printArray(array);
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
+        System.out.println("Recursive Bubble Sort");
+        array = generateRandArray(RLENGTH);
+        printArray(array);
+        time = System.currentTimeMillis();
+        System.out.print("output: ");
+        Sort.recursiveBubbleSort(array);
         printArray(array);
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
@@ -45,6 +62,14 @@ public class Main {
         Sort.insertionSort(array);
         printArray(array);
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
+        System.out.println("Recursive Insertion Sort");
+        array = generateRandArray(RLENGTH);
+        printArray(array);
+        time = System.currentTimeMillis();
+        System.out.print("output: ");
+        Sort.recursiveInsertionSort(array);
+        printArray(array);
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
         System.out.println("Selection Sort: an algorithm that sorts a list by dividing it into sorted and unsorted sections.");
@@ -53,6 +78,14 @@ public class Main {
         time = System.currentTimeMillis();
         System.out.print("output: ");
         Sort.selectionSort(array);
+        printArray(array);
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
+        System.out.println("Recursive Selection Sort");
+        array = generateRandArray(RLENGTH);
+        printArray(array);
+        time = System.currentTimeMillis();
+        System.out.print("output: ");
+        Sort.recursiveSelectionSort(array);
         printArray(array);
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
