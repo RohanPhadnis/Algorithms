@@ -8,7 +8,6 @@ random_list = [random.randint(0, 100) for _ in range(20)]
 sorted_list = list(range(30))
 
 
-print('Linear Search: an algorithm that finds an element in a list by iterating sequentially.')
 print('Linear Search:')
 print(random_list)
 tgt = random.choice(random_list)
@@ -27,8 +26,6 @@ print()
 print()
 print()
 
-
-print('Binary Search: an algorithm that finds an element in a sorted list by averaging upper and lower bounds.')
 print('Binary Search:')
 print(sorted_list)
 tgt = random.choice(sorted_list)
@@ -48,7 +45,6 @@ print()
 print()
 
 
-print('Bubble Sort: an algorithm that sorts a list by comparing adjacent elements to each other.')
 print('Bubble Sort:')
 print(random_list)
 start = time.time()
@@ -65,7 +61,6 @@ print()
 print()
 
 
-print('Insertion Sort: an algorithm that sorts a list by comparing a selected element to other elements.')
 print('Insertion Sort:')
 print(random_list)
 start = time.time()
@@ -82,7 +77,6 @@ print()
 print()
 
 
-print('Selection Sort: an algorithm that sorts a list by dividing it into sorted and unsorted sections.')
 print('Selection Sort:')
 print(random_list)
 start = time.time()
@@ -99,7 +93,6 @@ print()
 print()
 
 
-print('Merge Sort: an algorithm that sorts a list by dividing it into more basic structures and joining them back.')
 print('Merge Sort:')
 print(random_list)
 start = time.time()

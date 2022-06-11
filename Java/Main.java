@@ -8,7 +8,7 @@ public class Main {
         final int LENGTH = 400;
         final int RLENGTH = 80;
 
-        System.out.println("Linear Search: an algorithm that finds an element in a list by iterating sequentially.");
+        System.out.println("Linear Search");
         array = generateRandArray(LENGTH);
         printArray(array);
         target = choice(array);
@@ -22,7 +22,7 @@ public class Main {
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
-        System.out.println("Binary Search: an algorithm that finds an element in a sorted list by averaging upper and lower bounds.");
+        System.out.println("Binary Search");
         array = generateSortedArray(LENGTH);
         printArray(array);
         target = choice(array);
@@ -36,7 +36,7 @@ public class Main {
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
-        System.out.println("Bubble Sort: an algorithm that sorts a list by comparing adjacent elements to each other.");
+        System.out.println("Bubble Sort");
         array = generateRandArray(LENGTH);
         printArray(array);
         time = System.currentTimeMillis();
@@ -54,7 +54,7 @@ public class Main {
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
-        System.out.println("Insertion Sort: an algorithm that sorts a list by comparing a selected element to other elements.");
+        System.out.println("Insertion Sort");
         array = generateRandArray(LENGTH);
         printArray(array);
         time = System.currentTimeMillis();
@@ -72,7 +72,7 @@ public class Main {
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
 
-        System.out.println("Selection Sort: an algorithm that sorts a list by dividing it into sorted and unsorted sections.");
+        System.out.println("Selection Sort");
         array = generateRandArray(LENGTH);
         printArray(array);
         time = System.currentTimeMillis();
@@ -89,6 +89,15 @@ public class Main {
         printArray(array);
         System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
+
+        System.out.println("Merge Sort");
+        array = generateRandArray(80);
+        printArray(array);
+        time = System.currentTimeMillis();
+        System.out.print("output: ");
+        array = Sort.mergeSort(array);
+        printArray(array);
+        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
 
     }
 

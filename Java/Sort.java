@@ -112,4 +112,65 @@ public class Sort {
             recursiveSelectionSort(array, index + 1);
         }
     }
+
+    public static int[] mergeSort(int[] array) {
+        int breakPoint = array.length / 2 + array.length % 2;
+        int[] left = new int[breakPoint];
+        int[] right = new int[array.length - breakPoint];
+        boolean m = false;
+        int temp;
+        for (int i = 0; i < breakPoint; i++) {
+            left[i] = array[i];
+            if (i < right.length) {
+                right[i] = array[breakPoint + i];
+            }
+        }
+        if (left.length == 1 || right.length == 1) {
+            m = true;
+            if (left.length == 2 && left[0] > left[1]) {
+                temp = left[0];
+                left[0] = left[1];
+                left[1] = temp;
+            } else if (right.length == 2 && right[0] > right[1]) {
+                temp = right[0];
+                right[0] = right[1];
+                right[1] = temp;
+            }
+        }
+        return combine(new int[][] {left, right}, m);
+    }
+
+    public static int[] combine(int[][] array, boolean merge) {
+        if (!merge) {
+            array = new int[][] {mergeSort(array[0]), mergeSort(array[1])};
+        }
+        int[] output = new int[array[0].length + array[1].length];
+        int left = 0;
+        int right = 0;
+        int i = 0;
+        while (left < array[0].length && right < array[1].length) {
+            if (array[0][left] < array[1][right]) {
+                output[i] = array[0][left];
+                left++;
+            } else {
+                output[i] = array[1][right];
+                right++;
+            }
+            i++;
+        }
+        if (left == array[0].length) {
+            while (right < array[1].length) {
+                output[i] = array[1][right];
+                right++;
+                i++;
+            }
+        } else if (right == array[1].length) {
+            while (left < array[0].length) {
+                output[i] = array[0][left];
+                left++;
+                i++;
+            }
+        }
+        return output;
+    }
 }
