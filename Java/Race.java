@@ -1,12 +1,11 @@
-public class Main {
+public class Race {
 
     public static void main(String[] args) {
 
         long time;
         int[] array;
         int target;
-        final int LENGTH = 400;
-        final int RLENGTH = 84;
+        final int LENGTH = 1000;
 
         System.out.println("Linear Search");
         array = generateRandArray(LENGTH);
@@ -16,10 +15,6 @@ public class Main {
         time = System.nanoTime();
         System.out.println("output: " + Search.linearSearch(array, target));
         System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
-        System.out.println("Recursive Linear Search");
-        time = System.nanoTime();
-        System.out.println("output: " + Search.recursiveLinearSearch(array, target));
-        System.out.println("time: " + (System.currentTimeMillis() - time) / 1000);
         System.out.println();
         System.out.println();
         System.out.println();
@@ -32,10 +27,6 @@ public class Main {
         time = System.nanoTime();
         System.out.println("output: " + Search.binarySearch(array, target));
         System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
-        System.out.println("Recursive Binary Search");
-        time = System.nanoTime();
-        System.out.println("output: " + Search.recursiveBinarySearch(array, target));
-        System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
         System.out.println();
         System.out.println();
         System.out.println();
@@ -46,14 +37,6 @@ public class Main {
         time = System.nanoTime();
         System.out.print("output: ");
         Sort.bubbleSort(array);
-        printArray(array);
-        System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
-        System.out.println("Recursive Bubble Sort");
-        array = generateRandArray(RLENGTH);
-        printArray(array);
-        time = System.nanoTime();
-        System.out.print("output: ");
-        Sort.recursiveBubbleSort(array);
         printArray(array);
         System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
         System.out.println();
@@ -68,14 +51,6 @@ public class Main {
         Sort.insertionSort(array);
         printArray(array);
         System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
-        System.out.println("Recursive Insertion Sort");
-        array = generateRandArray(RLENGTH);
-        printArray(array);
-        time = System.nanoTime();
-        System.out.print("output: ");
-        Sort.recursiveInsertionSort(array);
-        printArray(array);
-        System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
         System.out.println();
         System.out.println();
         System.out.println();
@@ -88,26 +63,9 @@ public class Main {
         Sort.selectionSort(array);
         printArray(array);
         System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
-        System.out.println("Recursive Selection Sort");
-        array = generateRandArray(RLENGTH);
-        printArray(array);
-        time = System.nanoTime();
-        System.out.print("output: ");
-        Sort.recursiveSelectionSort(array);
-        printArray(array);
-        System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
         System.out.println();
         System.out.println();
         System.out.println();
-
-        System.out.println("Merge Sort");
-        array = generateRandArray(RLENGTH);
-        printArray(array);
-        time = System.nanoTime();
-        System.out.print("output: ");
-        array = Sort.mergeSort(array);
-        printArray(array);
-        System.out.println("time: " + (double) (System.nanoTime() - time) / Math.pow(10, 9));
 
     }
 

@@ -125,24 +125,15 @@ public class Sort {
                 right[i] = array[breakPoint + i];
             }
         }
-        if (left.length == 1 || right.length == 1) {
-            m = true;
-            if (left.length == 2 && left[0] > left[1]) {
-                temp = left[0];
-                left[0] = left[1];
-                left[1] = temp;
-            } else if (right.length == 2 && right[0] > right[1]) {
-                temp = right[0];
-                right[0] = right[1];
-                right[1] = temp;
-            }
-        }
-        return combine(new int[][] {left, right}, m);
+        return combine(new int[][] {left, right});
     }
 
-    public static int[] combine(int[][] array, boolean merge) {
-        if (!merge) {
-            array = new int[][] {mergeSort(array[0]), mergeSort(array[1])};
+    public static int[] combine(int[][] array) {
+        if (array[0].length > 1) {
+            array[0] = mergeSort(array[0]);
+        }
+        if (array[1].length > 1) {
+            array[1] = mergeSort(array[1]);
         }
         int[] output = new int[array[0].length + array[1].length];
         int left = 0;
