@@ -42,6 +42,12 @@ int main(void) {
     printf("Recursive Binary Search\n");
     printf("output: %d\n\n\n", recursive_binary_search(array, SIZE, target, 0, SIZE-1));
 
+    printf("Bubble Sort\n");
+    rand_array(array, SIZE);
+    print_array(array, SIZE);
+    bubble_sort(array, SIZE);
+    print_array(array, SIZE);
+
     return 0;
 }
 
@@ -134,5 +140,23 @@ int recursive_binary_search(int array[], int size, int target, int low, int high
         return recursive_binary_search(array, size, target, low, avg);
     } else {
         return recursive_binary_search(array, size, target, avg, high);
+    }
+}
+
+void bubble_sort(int array[], int size) {
+    int i;
+    int j;
+    int temp;
+    int sorted = 0;
+    for (i = 0; i < size && !sorted; i++) {
+        sorted = 1;
+        for (j = 1; j < size; j++) {
+            if (array[j - 1] > array[j]) {
+                temp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = temp;
+                sorted = 0;
+            }
+        }
     }
 }
