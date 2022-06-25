@@ -42,7 +42,7 @@ public class Search {
 
     public static int recursiveBinarySearch(int[] array, int target, int low, int high) {
         int avg = (low + high) / 2;
-        if ((avg == low || avg == high) && array[avg] != target) { return -1; }
+        if (low == high && array[avg] != target) { return -1; }
         else if (array[avg] == target) { return avg; }
         else if (array[avg] > target) { return recursiveBinarySearch(array, target, low, avg); }
         else if (array[avg] < target) { return recursiveBinarySearch(array, target, avg, high); }
