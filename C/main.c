@@ -8,6 +8,8 @@ void print_array(int array[], int size);
 void ord_array(int array[], int size);
 void rand_array(int array[], int size);
 int choice(int array[], int size);
+void insert(int array[], int current, int target);
+int get_min_index(int array[], int size, int start);
 
 // Search Functions
 int linear_search(int array[], int size, int target);
@@ -17,6 +19,12 @@ int recursive_binary_search(int array[], int size, int target, int low, int high
 
 // Sort Functions
 void bubble_sort(int array[], int size);
+void recursive_bubble_sort(int array[], int size, int i, int sorted);
+void insertion_sort(int array[], int size);
+void recursive_insertion_sort(int array[], int size, int index);
+void selection_sort(int array[], int size);
+void recursive_selection_sort(int array[], int size, int index);
+void merge_sort();
 
 // Main Method
 int main(void) {
@@ -47,9 +55,42 @@ int main(void) {
     print_array(array, SIZE);
     bubble_sort(array, SIZE);
     print_array(array, SIZE);
+    printf("Recursive Bubble Sort\n");
+    rand_array(array, SIZE);
+    print_array(array, SIZE);
+    recursive_bubble_sort(array, SIZE, 0, 1);
+    print_array(array, SIZE);
+    printf("\n\n\n");
+
+    printf("Insertion Sort\n");
+    rand_array(array, SIZE);
+    print_array(array, SIZE);
+    insertion_sort(array, SIZE);
+    print_array(array, SIZE);
+    printf("Recursive Insertion Sort\n");
+    rand_array(array, SIZE);
+    print_array(array, SIZE);
+    recursive_insertion_sort(array, SIZE, 0);
+    print_array(array, SIZE);
+    printf("\n\n\n");
+
+    printf("Selection Sort\n");
+    rand_array(array, SIZE);
+    print_array(array, SIZE);
+    selection_sort(array, SIZE);
+    print_array(array, SIZE);
+    printf("Recursive Selection Sort\n");
+    rand_array(array, SIZE);
+    print_array(array, SIZE);
+    recursive_selection_sort(array, SIZE, 0);
+    print_array(array, SIZE);
+    printf("\n\n\n");
 
     return 0;
 }
+
+
+// **** General Functions ****
 
 double rand_double() {
     double output = 1. * rand() / RAND_MAX;
@@ -86,6 +127,29 @@ int choice(int array[], int size) {
     int index = rand_double() * size;
     return array[index];
 }
+
+void insert(int array[], int current, int target) {
+    int i;
+    int temp = array[current];
+    for (i = current; i >  target; i--) {
+        array[i] = array[i - 1];
+    }
+    array[target] = temp;
+}
+
+int get_min_index(int array[], int size, int start) {
+    int i;
+    int output = start;
+    for (i = start; i < size; i++) {
+        if (array[i] < array[output]) {
+            output = i;
+        }
+    }
+    return output;
+}
+
+
+// **** Search Functions ****
 
 int linear_search(int array[], int size, int target) {
     int i;
@@ -143,6 +207,9 @@ int recursive_binary_search(int array[], int size, int target, int low, int high
     }
 }
 
+
+// **** Sort Functions ****
+
 void bubble_sort(int array[], int size) {
     int i;
     int j;
@@ -158,5 +225,69 @@ void bubble_sort(int array[], int size) {
                 sorted = 0;
             }
         }
+    }
+}
+
+void recursive_bubble_sort(int array[], int size, int i, int sorted) {
+    int temp;
+    if (i % size == size - 1) {
+        if (!sorted) {
+            recursive_bubble_sort(array, size, i+1, 1);
+        }
+    } else {
+        if (array[i % size] > array[i % size + 1]) {
+            temp = array[i % size];
+            array[i % size] = array[i % size + 1];
+            array[i % size + 1] = temp;
+            recursive_bubble_sort(array, size, i+1, 0);
+        } else {
+            recursive_bubble_sort(array, size, i+1, sorted);
+        }
+    }
+}
+
+void insertion_sort(int array[], int size) {
+    int index = 1;
+    int i;
+    while (index < size) {
+        i = 0;
+        while (array[i] < array[index]) {
+            i++;
+        }
+        insert(array, index, i);
+        index++;
+    }
+}
+
+void recursive_insertion_sort(int array[], int size, int index) {
+    int i = 0;
+    while (array[i] < array[index]) {
+        i++;
+    }
+    insert(array, index, i);
+    if (index < size - 1) {
+        recursive_insertion_sort(array, size, index + 1);
+    }
+}
+
+void selection_sort(int array[], int size) {
+    int i;
+    int temp;
+    int min_index;
+    for (i = 0; i < size; i++) {
+        min_index = get_min_index(array, size, i);
+        temp = array[i];
+        array[i] = array[min_index];
+        array[min_index] = temp;
+    }
+}
+
+void recursive_selection_sort(int array[], int size, int index) {
+    int min_index = get_min_index(array, size, index);
+    int temp = array[min_index];
+    array[min_index] = array[index];
+    array[index] = temp;
+    if (index < size - 1) {
+        recursive_selection_sort(array, size, index + 1);
     }
 }
