@@ -1,6 +1,7 @@
 // Libraries
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // General Functions
 double rand_double();
@@ -31,59 +32,107 @@ int main(void) {
     const int SIZE = 100;
     int array[SIZE];
     int target;
+    int result;
+    clock_t start;
+    clock_t end;
+    double delta_time;
 
     printf("Linear Search\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
     target = choice(array, SIZE);
     printf("target: %d\n", target);
-    printf("output: %d\n", linear_search(array, SIZE, target));
+    start = clock();
+    result = linear_search(array, SIZE, target);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("output: %d\n", result);
+    printf("time: %lf\n", delta_time);
     printf("Recursive Linear Search\n");
-    printf("output: %d\n\n\n", recursive_linear_search(array, SIZE, target, 0));
+    start = clock();
+    result = recursive_linear_search(array, SIZE, target, 0);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("output: %d\n", result);
+    printf("time: %lf\n\n\n\n", delta_time);
 
     printf("Binary Search\n");
     ord_array(array, SIZE);
     print_array(array, SIZE);
     target = choice(array, SIZE);
     printf("target: %d\n", target);
-    printf("output: %d\n", binary_search(array, SIZE, target));
+    start = clock();
+    result = binary_search(array, SIZE, target);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("output: %d\n", result);
+    printf("time: %lf\n", delta_time);
     printf("Recursive Binary Search\n");
-    printf("output: %d\n\n\n", recursive_binary_search(array, SIZE, target, 0, SIZE-1));
+    start = clock();
+    result = recursive_binary_search(array, SIZE, target, 0, SIZE-1);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("output: %d\n", result);
+    printf("time: %lf\n\n\n\n", delta_time);
 
     printf("Bubble Sort\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
+    start = clock();
     bubble_sort(array, SIZE);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
+    printf("time: %lf\n", delta_time);
     printf("Recursive Bubble Sort\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
+    start = clock();
     recursive_bubble_sort(array, SIZE, 0, 1);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
+    printf("time: %lf\n", delta_time);
     printf("\n\n\n");
 
     printf("Insertion Sort\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
+    start = clock();
     insertion_sort(array, SIZE);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
+    printf("time: %lf\n", delta_time);
     printf("Recursive Insertion Sort\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
+    start = clock();
     recursive_insertion_sort(array, SIZE, 0);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
+    printf("time: %lf\n", delta_time);
     printf("\n\n\n");
 
     printf("Selection Sort\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
+    start = clock();
     selection_sort(array, SIZE);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
+    printf("time: %lf\n", delta_time);
     printf("Recursive Selection Sort\n");
     rand_array(array, SIZE);
     print_array(array, SIZE);
+    start = clock();
     recursive_selection_sort(array, SIZE, 0);
+    end = clock();
+    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
+    printf("time: %lf\n", delta_time);
     printf("\n\n\n");
 
     return 0;
