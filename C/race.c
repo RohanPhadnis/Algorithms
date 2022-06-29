@@ -14,22 +14,16 @@ int get_min_index(int array[], int size, int start);
 
 // Search Functions
 int linear_search(int array[], int size, int target);
-int recursive_linear_search(int array[], int size, int target, int index);
 int binary_search(int array[], int size, int target);
-int recursive_binary_search(int array[], int size, int target, int low, int high);
 
 // Sort Functions
 void bubble_sort(int array[], int size);
-void recursive_bubble_sort(int array[], int size, int i, int sorted);
 void insertion_sort(int array[], int size);
-void recursive_insertion_sort(int array[], int size, int index);
 void selection_sort(int array[], int size);
-void recursive_selection_sort(int array[], int size, int index);
-void merge_sort();
 
 // Main Method
 int main(void) {
-    const int SIZE = 100;
+    const int SIZE = 1000;
     int array[SIZE];
     int target;
     int result;
@@ -47,13 +41,6 @@ int main(void) {
     end = clock();
     delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("output: %d\n", result);
-    printf("time: %lf\n", delta_time);
-    printf("Recursive Linear Search\n");
-    start = clock();
-    result = recursive_linear_search(array, SIZE, target, 0);
-    end = clock();
-    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("output: %d\n", result);
     printf("time: %lf\n\n\n\n", delta_time);
 
     printf("Binary Search\n");
@@ -63,13 +50,6 @@ int main(void) {
     printf("target: %d\n", target);
     start = clock();
     result = binary_search(array, SIZE, target);
-    end = clock();
-    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("output: %d\n", result);
-    printf("time: %lf\n", delta_time);
-    printf("Recursive Binary Search\n");
-    start = clock();
-    result = recursive_binary_search(array, SIZE, target, 0, SIZE-1);
     end = clock();
     delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("output: %d\n", result);
@@ -83,17 +63,7 @@ int main(void) {
     end = clock();
     delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
-    printf("time: %lf\n", delta_time);
-    printf("Recursive Bubble Sort\n");
-    rand_array(array, SIZE);
-    print_array(array, SIZE);
-    start = clock();
-    recursive_bubble_sort(array, SIZE, 0, 1);
-    end = clock();
-    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
-    print_array(array, SIZE);
-    printf("time: %lf\n", delta_time);
-    printf("\n\n\n");
+    printf("time: %lf\n\n\n\n", delta_time);
 
     printf("Insertion Sort\n");
     rand_array(array, SIZE);
@@ -103,17 +73,7 @@ int main(void) {
     end = clock();
     delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
-    printf("time: %lf\n", delta_time);
-    printf("Recursive Insertion Sort\n");
-    rand_array(array, SIZE);
-    print_array(array, SIZE);
-    start = clock();
-    recursive_insertion_sort(array, SIZE, 0);
-    end = clock();
-    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
-    print_array(array, SIZE);
-    printf("time: %lf\n", delta_time);
-    printf("\n\n\n");
+    printf("time: %lf\n\n\n\n", delta_time);
 
     printf("Selection Sort\n");
     rand_array(array, SIZE);
@@ -123,17 +83,7 @@ int main(void) {
     end = clock();
     delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
     print_array(array, SIZE);
-    printf("time: %lf\n", delta_time);
-    printf("Recursive Selection Sort\n");
-    rand_array(array, SIZE);
-    print_array(array, SIZE);
-    start = clock();
-    recursive_selection_sort(array, SIZE, 0);
-    end = clock();
-    delta_time = ((double) (end - start)) / CLOCKS_PER_SEC;
-    print_array(array, SIZE);
-    printf("time: %lf\n", delta_time);
-    printf("\n\n\n");
+    printf("time: %lf\n\n\n\n", delta_time);
 
     return 0;
 }
@@ -210,18 +160,6 @@ int linear_search(int array[], int size, int target) {
     return -1;
 }
 
-int recursive_linear_search(int array[], int size, int target, int index) {
-    if (index < size) {
-        if (array[index] == target) {
-            return index;
-        } else {
-            return recursive_linear_search(array, size, target, index + 1);
-        }
-    } else {
-        return -1;
-    }
-}
-
 int binary_search(int array[], int size, int target) {
     int low = 0;
     int high = size - 1;
@@ -240,19 +178,6 @@ int binary_search(int array[], int size, int target) {
         return avg;
     } else {
         return -1;
-    }
-}
-
-int recursive_binary_search(int array[], int size, int target, int low, int high) {
-    int avg = (low + high) / 2;
-    if (array[avg] == target) {
-        return avg;
-    } else if (high == low) {
-        return -1;
-    } else if (array[avg] > target) {
-        return recursive_binary_search(array, size, target, low, avg);
-    } else {
-        return recursive_binary_search(array, size, target, avg, high);
     }
 }
 
@@ -277,24 +202,6 @@ void bubble_sort(int array[], int size) {
     }
 }
 
-void recursive_bubble_sort(int array[], int size, int i, int sorted) {
-    int temp;
-    if (i % size == size - 1) {
-        if (!sorted) {
-            recursive_bubble_sort(array, size, i+1, 1);
-        }
-    } else {
-        if (array[i % size] > array[i % size + 1]) {
-            temp = array[i % size];
-            array[i % size] = array[i % size + 1];
-            array[i % size + 1] = temp;
-            recursive_bubble_sort(array, size, i+1, 0);
-        } else {
-            recursive_bubble_sort(array, size, i+1, sorted);
-        }
-    }
-}
-
 void insertion_sort(int array[], int size) {
     int index = 1;
     int i;
@@ -308,17 +215,6 @@ void insertion_sort(int array[], int size) {
     }
 }
 
-void recursive_insertion_sort(int array[], int size, int index) {
-    int i = 0;
-    while (array[i] < array[index]) {
-        i++;
-    }
-    insert(array, index, i);
-    if (index < size - 1) {
-        recursive_insertion_sort(array, size, index + 1);
-    }
-}
-
 void selection_sort(int array[], int size) {
     int i;
     int temp;
@@ -328,15 +224,5 @@ void selection_sort(int array[], int size) {
         temp = array[i];
         array[i] = array[min_index];
         array[min_index] = temp;
-    }
-}
-
-void recursive_selection_sort(int array[], int size, int index) {
-    int min_index = get_min_index(array, size, index);
-    int temp = array[min_index];
-    array[min_index] = array[index];
-    array[index] = temp;
-    if (index < size - 1) {
-        recursive_selection_sort(array, size, index + 1);
     }
 }
